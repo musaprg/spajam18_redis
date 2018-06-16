@@ -8,8 +8,8 @@ from argparse import ArgumentParser
 
 parser = ArgumentParser(description="QueueWatchClient")
 parser.add_argument("path_to_google_home", type=str, help="URL to Google Home")
-parser.add_argument("--local", action='store_true')
-parser.add_argument("--debug", action='store_true')
+parser.add_argument("--local", action='store_true', help="Run with using local redis server")
+parser.add_argument("--debug", action='store_true', help="Run with debug mode")
 
 TARGET = None
 TRYTIMES = 3
