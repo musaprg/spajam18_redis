@@ -3,6 +3,7 @@ import watcher
 import signal
 import watcher
 import requests
+import os
 from argparse import ArgumentParser
 
 parser = ArgumentParser(description="QueueWatchClient")
@@ -30,7 +31,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     TARGET = args.path_to_google_home
 
-    conf = toml.load("config.toml")
+    conf = toml.load(os.path.join(__file__, "config.toml"))
     if args.local:
         host = conf["redis-local"]["ip"]
         port = conf["redis-local"]["port"]
