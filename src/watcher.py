@@ -6,12 +6,11 @@ import logging
 from pprint import pprint
 
 class PlayQueueWatcher:
-    def __init__(self, host, port, name, password=None, debug=False, wait=5):
+    def __init__(self, host, port, password=None, debug=False, wait=5):
         """
 
         :param host:
         :param port:
-        :param name:
         :param password:
         :param debug:
         :param wait:
@@ -23,7 +22,6 @@ class PlayQueueWatcher:
         self._worker = None
 
         self._conn = self._connect(host, port, password)
-        self._name = name
         self._wait = wait
 
     def get_redis_conn(self):
@@ -94,10 +92,13 @@ class PlayQueueWatcher:
         Dequeue from queue in redis after waiting for a while.
         """
         while True:
-            data = self._conn.rpop(self._name)
-            if not data:
+            keys = self._conn.keys()
+            if len(keys) == 0:
                 yield None
                 continue
+            key = keys[-1]
+            data = self._conn.get(key)
+            self._conn.delete(key)
             data = json.loads(data)
             yield data
 

@@ -28,5 +28,5 @@ if __name__ == '__main__':
     # signal.signal(signal.SIGTERM, handler)
     # signal.signal(signal.SIGKILL, handler)
 
-    w = watcher.PlayQueueWatcher(host, port, "hoge", password=password, debug=True)
+    w = watcher.PlayQueueWatcher(host, port, password=password, debug=True)
     w.start(callback, with_thread=False)
