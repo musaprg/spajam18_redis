@@ -9,6 +9,7 @@ from argparse import ArgumentParser
 parser = ArgumentParser(description="QueueWatchClient")
 parser.add_argument("path_to_google_home", type=str, help="URL to Google Home")
 parser.add_argument("--local", action='store_true')
+parser.add_argument("--debug", action='store_true')
 
 TARGET = None
 TRYTIMES = 3
@@ -41,5 +42,5 @@ if __name__ == '__main__':
         port = conf["redis"]["port"]
         password = conf["redis"]["password"]
 
-    w = watcher.PlayQueueWatcher(host, port, password=password, debug=True)
+    w = watcher.PlayQueueWatcher(host, port, password=password, debug=args.debug)
     w.start(callback, with_thread=False)
