@@ -10,6 +10,7 @@ parser = ArgumentParser(description="QueueWatchClient")
 parser.add_argument("path_to_google_home", type=str, help="URL to Google Home")
 parser.add_argument("--local", action='store_true', help="Run with using local redis server")
 parser.add_argument("--debug", action='store_true', help="Run with debug mode")
+parser.add_argument("--waittime", type=int, help="Wait time between songs [sec]")
 
 TARGET = None
 TRYTIMES = 3
@@ -42,5 +43,5 @@ if __name__ == '__main__':
         port = conf["redis"]["port"]
         password = conf["redis"]["password"]
 
-    w = watcher.PlayQueueWatcher(host, port, password=password, debug=args.debug)
+    w = watcher.PlayQueueWatcher(host, port, password=password, debug=args.debug, wait=args.waittime)
     w.start(callback, with_thread=False)
