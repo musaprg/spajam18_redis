@@ -98,9 +98,9 @@ class PlayQueueWatcher:
                 continue
             key = keys[-1]
             data = self._conn.get(key)
-            self._conn.delete(key)
             data = json.loads(data)
             yield data
+            self._conn.delete(key)
 
     def __del__(self):
         self.stop()
