@@ -18,7 +18,9 @@ def callback(data):
     :return:
     """
     for i in range(TRYTIMES):
-        res = requests.post(TARGET, data=data["song"]["music_url"])
+        params = {"text":data["song"]["music_url"]}
+        res = requests.get(TARGET, params=params)
+        # res = requests.post(TARGET, data=data["song"]["music_url"])
         if res.status_code == requests.codes.ok:
             return
     raise TimeoutError
