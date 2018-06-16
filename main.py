@@ -43,5 +43,5 @@ if __name__ == '__main__':
         port = conf["redis"]["port"]
         password = conf["redis"]["password"]
 
-    w = watcher.PlayQueueWatcher(host, port, password=password, debug=args.debug, wait=args.waittime)
+    w = watcher.PlayQueueWatcher(host, port, password=password, debug=args.debug, wait=args.wait)
     w.start(callback, with_thread=False)
