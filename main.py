@@ -10,7 +10,7 @@ parser = ArgumentParser(description="QueueWatchClient")
 parser.add_argument("path_to_google_home", type=str, help="URL to Google Home")
 parser.add_argument("--local", action='store_true', help="Run with using local redis server")
 parser.add_argument("--debug", action='store_true', help="Run with debug mode")
-parser.add_argument("--waittime", type=int, help="Wait time between songs [sec]")
+parser.add_argument("--wait", type=int, help="Wait time between songs [sec]")
 
 TARGET = None
 TRYTIMES = 3
