@@ -25,12 +25,12 @@ def callback(data):
 
 if __name__ == '__main__':
     conf = toml.load("config.toml")
-    # host = conf["redis"]["ip"]
-    # port = conf["redis"]["port"]
-    # password = conf["redis"]["password"]
-    host = conf["redis-local"]["ip"]
-    port = conf["redis-local"]["port"]
-    password = None
+    host = conf["redis"]["ip"]
+    port = conf["redis"]["port"]
+    password = conf["redis"]["password"]
+    # host = conf["redis-local"]["ip"]
+    # port = conf["redis-local"]["port"]
+    # password = None
 
     args = parser.parse_args()
     TARGET = args.path_to_google_home
