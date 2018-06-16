@@ -1,6 +1,7 @@
 import toml
 import watcher
 import signal
+import watcher
 
 # w = None
 
@@ -17,7 +18,7 @@ def callback(data):
 #     w.stop()
 
 if __name__ == '__main__':
-    conf = toml.load("../config.toml")
+    conf = toml.load("config.toml")
     # host = conf["redis"]["ip"]
     # port = conf["redis"]["port"]
     # password = conf["redis"]["password"]
