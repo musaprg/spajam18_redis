@@ -13,6 +13,7 @@ parser.add_argument("--debug", action='store_true', help="Run with debug mode")
 parser.add_argument("--wait", type=int, help="Wait time between songs [sec]")
 
 # TODO: Implements multi target selection available
+# TODO: Implements dynamic address modification (based on HTTP request)
 # TARGETS = []
 TARGET = None
 TRYTIMES = 3
