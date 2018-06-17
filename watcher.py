@@ -101,6 +101,7 @@ class PlayQueueWatcher:
             data = self._conn.get(key)
             logging.debug("Next key: {0}".format(key))
             logging.debug("Data: {0}".format(data))
+            logging.debug("Remaining: ".format(keys[1::]))
             data = json.loads(data)
             yield data
             logging.debug("Delete key: {0}".format(key))
