@@ -12,6 +12,8 @@ parser.add_argument("--local", action='store_true', help="Run with using local r
 parser.add_argument("--debug", action='store_true', help="Run with debug mode")
 parser.add_argument("--wait", type=int, help="Wait time between songs [sec]")
 
+# TODO: Implements multi target selection available
+# TARGET = []
 TARGET = None
 TRYTIMES = 3
 
@@ -24,7 +26,6 @@ def callback(data):
     for i in range(TRYTIMES):
         params = {"text":data["song"]["music_url"]}
         res = requests.get(TARGET, params=params)
-        # res = requests.post(TARGET, data=data["song"]["music_url"])
         if res.status_code == requests.codes.ok:
             return
     raise TimeoutError

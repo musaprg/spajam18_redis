@@ -67,6 +67,7 @@ class PlayQueueWatcher:
             for data in self._dequeue():
                 if data:
                     logging.debug("Received data.")
+                    logging.debug(data)
                     callback(data) # call callback function
                     time.sleep(int(data["song"]["time"]) + self._wait)  # Wait for time saved in queue
                 else:
@@ -82,6 +83,7 @@ class PlayQueueWatcher:
             for data in self._dequeue():
                 if data:
                     logging.debug("Received data.")
+                    logging.debug(data)
                     callback(data) # call callback function
                     time.sleep(int(data["song"]["time"]) + self._wait)  # Wait for time saved in queue
                 else:
