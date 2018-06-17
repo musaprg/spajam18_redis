@@ -98,7 +98,7 @@ class PlayQueueWatcher:
             if len(keys) == 0:
                 yield None
                 continue
-            key = keys[-1]
+            key = keys[0]
             data = self._conn.get(key)
             data = json.loads(data)
             yield data
