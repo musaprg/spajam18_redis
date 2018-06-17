@@ -83,7 +83,6 @@ class PlayQueueWatcher:
             for data in self._dequeue():
                 if data:
                     logging.debug("Received data.")
-                    logging.debug(data)
                     callback(data) # call callback function
                     time.sleep(int(data["song"]["time"]) + self._wait)  # Wait for time saved in queue
                 else:
@@ -100,8 +99,11 @@ class PlayQueueWatcher:
                 continue
             key = keys[0]
             data = self._conn.get(key)
+            logging.debug("Next key: {0}".format(key))
+            logging.debug("Data: {0}".format(data))
             data = json.loads(data)
             yield data
+            logging.debug("Delete key: {0}".format(key))
             self._conn.delete(key)
 
     def __del__(self):
